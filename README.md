@@ -98,8 +98,8 @@ Dart                  (.dart)
 1. Add the `bin` directory to your path (optional, or use the fully qualified path to the dart exe)
 1. Download the [DLOC source code](https://github.com/SigmaInformatique/dloc) from GitHub
 1. From the dloc directory, issue the following commands:
-1.1. `prompt> pub get` to download the dependencies
-1.1. `prompt> pub run dloc my_root_dir` to run the program (`pub run dloc` lists the available options)
+  1. `prompt> pub get` to download the dependencies
+  1. `prompt> pub run dloc my_root_dir` to run the program (`pub run dloc` lists the available options)
 
 ### Using docker
 
