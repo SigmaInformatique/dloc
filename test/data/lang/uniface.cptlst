@@ -1,0 +1,23 @@
+Listing of compilation: Form 'CFD0420'  at 26-Dec-2013 17:57:44
+
+[         1]              #include defparam
+
+Trigger <EXEC> from Form: CFD0420
+
+[         1]              ; Suppression des Representants C.F.E. (Historique)
+[         2]     1        $$entmaj="CFREP"
+[         3]     2        $$maj=""
+[         4]     3        $$sel=""
+[         5]     4        $$wtot=""
+[         6]     5        $$wcur=""
+[         7]     6        wafcpt/init=""
+[         8]     7        wafcpt1/init=""
+[         9]     8        call LP_ERGO_NL
+[        10]     9        $OKLOCK$ = "O"
+[        12]    10        Curoccvideo/inner "CFLQUAL.CFEX","COL=49"
+[        13]    11        Curoccvideo/inner "CFETP.CFEX","COL=49"
+[        15]    12        edit natrep.cfrep
+
+Trigger <ACPT> from Form: CFD0420
+
+[         1]     1        $$confirm="O"
