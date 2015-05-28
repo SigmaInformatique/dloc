@@ -101,7 +101,7 @@ Dart                  (.dart)
   1. `prompt> pub get` to download the dependencies
   1. `prompt> pub run dloc my_root_dir` to run the program (`pub run dloc` lists the available options)
 
-### Using docker
+### Using Docker
 
 TODO
 
