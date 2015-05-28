@@ -29,7 +29,7 @@ LOC computation done in: 447 ms
 
 DLOC is licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
-This software contains third party components. Please, see the LICENSE file for details.
+This software contains third party components. Please, see the [LICENSE](https://github.com/SigmaInformatique/dloc/blob/master/LICENSE) file for details.
 
 ## Options
 
@@ -92,7 +92,7 @@ Dart                  (.dart)
 
 ## How to run
 
-### Using an installed Dart SDK
+### Using Dart SDK
 
 1. Install (ie unzip) the [Dart SDK runtime](https://www.dartlang.org/downloads/)
 1. Add the `bin` directory to your path (optional, or use the fully qualified path to the dart exe)
