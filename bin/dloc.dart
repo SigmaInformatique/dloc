@@ -16,15 +16,17 @@
 // limitations under the License.
 
 import 'dart:io';
+import 'dart:collection';
 
 import 'package:args/args.dart';
 import 'package:dloc/dloc_util.dart';
 import 'package:dloc/dloc_base.dart';
 
 void _printLanguageInformation() {
+  Map<String, String> map = new SplayTreeMap();
+
   langs.forEach((Lang lang) {
-    String desc = lang.desc;
-    int length = 20 - desc.length;
+    int length = 20 - lang.desc.length;
     List<int> array = new List(length);
     for (int i = 0; i < length; i++) {
       array[i] = 0x0020;
@@ -36,8 +38,10 @@ void _printLanguageInformation() {
     .replaceAll('\\', '')
     .replaceAll('|', ',');
 
-    print('$desc $blanks $ext');
+    map[lang.desc] = blanks + ext;
   });
+
+  map.forEach((k, v) => print('$k $v'));
 }
 
 void _doStart(List<String> arguments) {

@@ -35,9 +35,9 @@ This software contains third party components. Please, see the [LICENSE](https:/
 
 ## Install
 
-Download [Dart](https://www.dartlang.org/downloads/) and unzip the ZIP file, which creates a dart directory.
+Download the [Dart SDK](https://www.dartlang.org/downloads/) and unzip the ZIP file.
 
-Put `dart/dart-sdk/bin` in your PATH.
+Put `dart-sdk/bin` in your PATH.
 
 If behind a proxy, set the environment variables: `http_proxy`, `https_proxy`, and `no_proxy`.
 
@@ -66,29 +66,26 @@ $ pub global run dloc /path/to/sources
 
 ```
 $ dloc
-
--r, --recursive           Recurse into sub-directories
+-r, --recursive           Recurse into sub-directories.
                           (defaults to on)
 
--S, --follow-links        Recurse into links to directories
-    --encoding            The encoding used (do not specify if unknown)
+-S, --follow-links        Follow symbolic links.
+    --encoding            The encoding to use (do not specify if unknown).
                           [utf8, latin1]
 
-    --match-d             Only count files in directories matching the regex
-    --not-match-d         Count all files except those in directories matching the regex
-    --match-f             Only count files whose basenames match the regex
-    --not-match-f         Count all files except those whose basenames match the regex
-    --report-file         Write the results to <file> file instead of STDOUT
-    --by-file             Report results for every source file encountered
-    --by-file-by-lang     Report results for every source file encountered in addition to reporting by language
-    --by-lang             Report results by language
+    --match-d             Only count files in directories matching the regex.
+    --not-match-d         Count all files except those in directories matching the regex.
+    --match-f             Only count files whose basenames match the regex.
+    --not-match-f         Count all files except those whose basenames match the regex.
+    --report-file         Write the results to <file> file instead of STDOUT.
+    --by-file             Report results for every source file encountered.
+    --by-file-by-lang     Report results for every source file encountered in addition to reporting by language.
+    --by-lang             Report results by language.
                           (defaults to on)
 
-    --print-cmd-detail    Print details about command args
-                          (defaults to on)
-
-    --sum-reports         Makes a cumulative set of results containing the sum of data from the individual report files
-    --show-lang           Print information about all known languages and exit
+    --print-cmd-detail    Print details about command arguments.
+    --sum-reports         Makes a cumulative set of results containing the sum of data from the individual report files.
+    --show-lang           Print information about all known languages and exit.
 ```
 
 ## Recognized Languages
@@ -96,29 +93,29 @@ $ dloc
 ```
 $ dloc --show-lang
 
-Java                  (.java)
-JSP                   (.jsp)
-Javascript            (.js)
-HTML                  (.htm,.html)
-SQL                   (.psql,.SQL,.sql,.pkb,.pks,.pls)
-Visual Basic          (.bas,.cls,.ctl,.dsr,.frm,.vb,.VB,.vba,.VBA,.vbs,.VBS)
-ASP                   (.asa,.asp)
-ASP.Net               (.asax,.ascx,.asmx,.aspx,.config,.master,.sitemap,.webinfo)
-Delphi Forms          (.dfm,.nfm)
-Progress              (.P,.p,.I,.I[0-9]{2},.F,.adm,.fd)
-Uniface               (.cptlst,.menlst,.prclst)
-Jasper XML            (.jrxml)
-Bourne Again Shell    .bash
-Bourne Shell          (.sh)
-DOS Batch             (.bat,.BAT,.cmd,.CMD)
-Talend items          (.item)
-C#                    (.cs)
-Delphi                (.dpr,.pas)
-Groovy                (.gant,.groovy)
-GSP                   (.gsp)
-XML                   (.xml,.XML)
-COBOL                 (.cbl,.CBL,.cob,.COB)
-Dart                  (.dart)
+ASP                  (.asa,.asp)
+ASP.Net              (.asax,.ascx,.asmx,.aspx,.config,.master,.sitemap,.webinfo)
+Bourne Again Shell   .bash
+Bourne Shell         (.sh)
+C#                   (.cs)
+COBOL                (.cbl,.CBL,.cob,.COB)
+DOS Batch            (.bat,.BAT,.cmd,.CMD)
+Dart                 (.dart)
+Delphi               (.dpr,.pas)
+Delphi Forms         (.dfm,.nfm)
+GSP                  (.gsp)
+Groovy               (.gant,.groovy)
+HTML                 (.htm,.html)
+JSP                  (.jsp)
+Jasper XML           (.jrxml)
+Java                 (.java)
+Javascript           (.js)
+Progress             (.P,.p,.I,.I[0-9]{2},.F,.adm,.fd)
+SQL                  (.psql,.SQL,.sql,.pkb,.pks,.pls)
+Talend items         (.item)
+Uniface              (.cptlst,.menlst,.prclst)
+Visual Basic         (.bas,.cls,.ctl,.dsr,.frm,.vb,.VB,.vba,.VBA,.vbs,.VBS)
+XML                  (.xml,.XML)
 ```
 
 ## Found a bug?
