@@ -1,11 +1,11 @@
 name: dloc
 version: 1.0.0
-author: Sigma Informatique <github@sigma.fr>
 description: A command-line application to count line of codes in Dart.
 homepage: https://github.com/SigmaInformatique
+author: Sigma Informatique <github@sigma.fr>
 
 environment:
-  sdk: '>=1.0.0 <2.0.0'
+  sdk: '>=1.10.0 <2.0.0'
 
 dependencies:
   args: "^0.13.1"
