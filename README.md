@@ -80,9 +80,6 @@ $ dloc
     --report-file         Write the results to <file> file instead of STDOUT.
     --by-file             Report results for every source file encountered.
     --by-file-by-lang     Report results for every source file encountered in addition to reporting by language.
-    --by-lang             Report results by language.
-                          (defaults to on)
-
     --print-cmd-detail    Print details about command arguments.
     --sum-reports         Makes a cumulative set of results containing the sum of data from the individual report files.
     --show-lang           Print information about all known languages and exit.
