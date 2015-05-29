@@ -2,10 +2,12 @@
 
 ## Overview
 
-DLOC is a Dart program to count blank lines, comment lines and physical lines of source code.
+DLOC is a Dart program to count blank lines, comment lines and physical lines of source code. 
+Inspired by the [cloc](http://cloc.sourceforge.net/) Perl script.
+
+Output example:
 
 ```
-prompt> dart dloc.dart $DLOC_HOME
 LOC computation started...
 
 files,language,blank,comment,code
@@ -31,10 +33,39 @@ DLOC is licensed under the [Apache License, Version 2.0](http://www.apache.org/l
 
 This software contains third party components. Please, see the [LICENSE](https://github.com/SigmaInformatique/dloc/blob/master/LICENSE) file for details.
 
-## Options
+## Install
+
+Download [Dart](https://www.dartlang.org/downloads/) and unzip the ZIP file, which creates a dart directory.
+
+Put `dart/dart-sdk/bin` in your PATH.
+
+If behind a proxy, set the environment variables: `http_proxy`, `https_proxy`, and `no_proxy`.
+
+Use the `pub global` command to install DLOC into your system.
 
 ```
-prompt> pub run dloc
+pub global activate dloc
+```
+
+## Use
+
+If you have [modified your PATH](https://www.dartlang.org/tools/pub/cmd/pub-global.html#running-a-script-from-your-path), 
+you can run DLOC from any local directory.
+
+```
+$ dloc /path/to/sources
+```
+
+Otherwise you can use the `pub global` command.
+
+```
+$ pub global run dloc /path/to/sources
+```
+
+## Configure
+
+```
+$ dloc
 
 -r, --recursive           Recurse into sub-directories
                           (defaults to on)
@@ -63,7 +94,7 @@ prompt> pub run dloc
 ## Recognized Languages
 
 ```
-prompt> pub run dloc --show-lang
+$ dloc --show-lang
 
 Java                  (.java)
 JSP                   (.jsp)
@@ -89,21 +120,6 @@ XML                   (.xml,.XML)
 COBOL                 (.cbl,.CBL,.cob,.COB)
 Dart                  (.dart)
 ```
-
-## How to run
-
-### Using Dart SDK
-
-1. Install (ie unzip) the [Dart SDK runtime](https://www.dartlang.org/downloads/)
-1. Add the `bin` directory to your path (optional, or use the fully qualified path to the dart exe)
-1. Download the [DLOC source code](https://github.com/SigmaInformatique/dloc) from GitHub
-1. From the dloc directory, issue the following commands:
-  1. `prompt> pub get` to download the dependencies
-  1. `prompt> pub run dloc my_root_dir` to run the program (`pub run dloc` lists the available options)
-
-### Using Docker
-
-TODO
 
 ## Found a bug?
 
