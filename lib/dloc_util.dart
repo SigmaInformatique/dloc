@@ -85,3 +85,16 @@ void backupFile(String filename, bool andDelete) {
     new File(filename).deleteSync();
   }
 }
+
+String fillWithBlanks(String current, [int width = 20]) {
+  int length = width - current.length;
+  if (length <= 0) {
+    return current;
+  }
+  List<int> array = new List(length);
+  for (int i = 0; i < length; i++) {
+    array[i] = 0x0020; // white char
+  }
+  String blanks = new String.fromCharCodes(array);
+  return current + blanks;
+}

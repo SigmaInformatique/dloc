@@ -71,17 +71,45 @@ class LocResult {
     });
   }
 
-  void printToFile(String reportFile) {
-    String content = 'files,language,blank,comment,code\n';
+  void printContent(String reportFile) {
+    if (reportFile == null) {
+      _toStdout();
+      return;
+    }
+
+    List<String> lines = new List();
+    lines.add('files,language,blank,comment,code');
     data.forEach((k, v) {
       if (v.files > 0) {
-        content += '${v.files},${v.desc},${v.blanks},${v.comments},${v.lines}\n';
+        lines.add('${v.files},${v.desc},${v.blanks},${v.comments},${v.lines}');
       }
     });
-    _appendToFile(content, reportFile);
-    if (reportFile != null) {
-      print('Wrote $reportFile');
-    }
+    _appendToFile(lines, reportFile, stdoutIfNull: false);
+    print('Wrote $reportFile');
+  }
+
+  void _toStdout() {
+    List<String> lines = new List();
+
+    String h1 = fillWithBlanks('files', 10);
+    String h2 = fillWithBlanks('language', 25);
+    String h3 = fillWithBlanks('blank', 10);
+    String h4 = fillWithBlanks('comment', 10);
+    String h5 = fillWithBlanks('code', 10);
+    lines.add('$h1$h2$h3$h4$h5');
+
+    data.forEach((k, v) {
+      if (v.files > 0) {
+        String c1 = fillWithBlanks('${v.files}', 10);
+        String c2 = fillWithBlanks('${v.desc}', 25);
+        String c3 = fillWithBlanks('${v.blanks}', 10);
+        String c4 = fillWithBlanks('${v.comments}', 10);
+        String c5 = fillWithBlanks('${v.lines}', 10);
+        lines.add('$c1$c2$c3$c4$c5');
+      }
+    });
+
+    _appendToFile(lines, null);
   }
 }
 
@@ -89,7 +117,8 @@ class LocResult {
 // Functions
 // ============================================================================
 
-int _handleLine(File file, String line, Lang lang, int idxMultiComment, ResultByFile result) {
+int _handleLine(File file, String line, Lang lang, int idxMultiComment,
+                ResultByFile result) {
   // Ignore full line?
   if (lang.rmMatches != null && lang.rmMatches.hasMatch(line)) {
     return idxMultiComment;
@@ -112,7 +141,9 @@ int _handleLine(File file, String line, Lang lang, int idxMultiComment, ResultBy
     // yes, looking for the closing chars
     int idx = line.indexOf(lang.cmtMultiEnds[idxMultiComment]);
     if (idx != -1) {
-      String after = line.substring(idx + lang.cmtMultiEnds[idxMultiComment].length).trim();
+      String after = line
+      .substring(idx + lang.cmtMultiEnds[idxMultiComment].length)
+      .trim();
       if (after.isEmpty) {
         result.comments++;
       } else {
@@ -174,9 +205,12 @@ int _handleLine(File file, String line, Lang lang, int idxMultiComment, ResultBy
         if (idxStart != -1) {
           //print(">>>> Begining : ${line}");
 
-          int idxEnd = line.indexOf(lang.cmtMultiEnds[idxMultiComment], idxStart);
+          int idxEnd =
+          line.indexOf(lang.cmtMultiEnds[idxMultiComment], idxStart);
           if (idxEnd != -1) {
-            String after = line.substring(idxEnd + lang.cmtMultiEnds[idxMultiComment].length).trim();
+            String after = line
+            .substring(idxEnd + lang.cmtMultiEnds[idxMultiComment].length)
+            .trim();
             if (idxStart > 0 || after.isNotEmpty) {
               result.lines++;
             } else {
@@ -202,18 +236,21 @@ int _handleLine(File file, String line, Lang lang, int idxMultiComment, ResultBy
   return -1;
 }
 
-ResultByFile _linesInFileGuessingCharset(File file, String filename, Lang lang, LocResult result) {
+ResultByFile _linesInFileGuessingCharset(
+    File file, String filename, Lang lang, LocResult result) {
   ResultByFile resByFile = new ResultByFile();
   int idxMultiComment = -1;
   try {
     file.readAsLinesSync(encoding: UTF8).forEach((line) {
-      idxMultiComment = _handleLine(file, line, lang, idxMultiComment, resByFile);
+      idxMultiComment =
+      _handleLine(file, line, lang, idxMultiComment, resByFile);
     });
   } on FileSystemException {
     resByFile.reset();
     idxMultiComment = -1;
     file.readAsLinesSync(encoding: LATIN1).forEach((line) {
-      idxMultiComment = _handleLine(file, line, lang, idxMultiComment, resByFile);
+      idxMultiComment =
+      _handleLine(file, line, lang, idxMultiComment, resByFile);
     });
   }
   if (idxMultiComment != -1) {
@@ -223,7 +260,8 @@ ResultByFile _linesInFileGuessingCharset(File file, String filename, Lang lang, 
   return resByFile;
 }
 
-ResultByFile _linesInFileKnowingCharset(File file, Encoding charset, String filename, Lang lang, LocResult result) {
+ResultByFile _linesInFileKnowingCharset(
+    File file, Encoding charset, String filename, Lang lang, LocResult result) {
   ResultByFile resByFile = new ResultByFile();
   int idxMultiComment = -1;
   file.readAsLinesSync(encoding: charset).forEach((line) {
@@ -236,27 +274,32 @@ ResultByFile _linesInFileKnowingCharset(File file, Encoding charset, String file
   return resByFile;
 }
 
-ResultByFile _linesInFile(File file, String charset, String filename, Lang lang, LocResult result) {
+ResultByFile _linesInFile(
+    File file, String charset, String filename, Lang lang, LocResult result) {
   if (charset == null) {
     return _linesInFileGuessingCharset(file, filename, lang, result);
   }
-  return _linesInFileKnowingCharset(file, ("latin1" == charset) ? LATIN1 : UTF8, filename, lang, result);
+  return _linesInFileKnowingCharset(
+      file, ("latin1" == charset) ? LATIN1 : UTF8, filename, lang, result);
 }
 
 void _processFile(File entity, Map<String, RegExp> matchers, LocResult result) {
   String dirname = parent(entity);
   String filename = lastSegment(entity);
 
-  if (matchers[NOT_MATCH_DIR] != null && matchers[NOT_MATCH_DIR].hasMatch(dirname)) {
+  if (matchers[NOT_MATCH_DIR] != null &&
+  matchers[NOT_MATCH_DIR].hasMatch(dirname)) {
     return;
   }
-  if (matchers[NOT_MATCH_FILE] != null && matchers[NOT_MATCH_FILE].hasMatch(filename)) {
+  if (matchers[NOT_MATCH_FILE] != null &&
+  matchers[NOT_MATCH_FILE].hasMatch(filename)) {
     return;
   }
   if (matchers[MATCH_DIR] != null && !matchers[MATCH_DIR].hasMatch(dirname)) {
     return;
   }
-  if (matchers[MATCH_FILE] != null && !matchers[MATCH_FILE].hasMatch(filename)) {
+  if (matchers[MATCH_FILE] != null &&
+  !matchers[MATCH_FILE].hasMatch(filename)) {
     return;
   }
 
@@ -267,10 +310,13 @@ void _processFile(File entity, Map<String, RegExp> matchers, LocResult result) {
 
   // print("Current entity: ${entity}");
 
-  ResultByFile resByFile = _linesInFile(entity, options[ENCODING], filename, lang, result);
+  ResultByFile resByFile =
+  _linesInFile(entity, options[ENCODING], filename, lang, result);
 
-  if (options[BY_FILE_BY_LANG] || options[BY_FILE]) {
-    _appendToFile("${resByFile.lines} ${toForwardSlash(entity.path)}\n", options[REPORT_FILE]);
+  if (options[BY_FILE] || options[BY_FILE_BY_LANG]) {
+    _appendToFile(['filename,blank,comment,code'], options[REPORT_FILE]);
+    _appendToFile(["${toForwardSlash(entity.path)},${resByFile.blanks},${resByFile.comments},${resByFile.lines} \n"],
+        options[REPORT_FILE]);
   }
 }
 
@@ -279,10 +325,16 @@ void _processFile(File entity, Map<String, RegExp> matchers, LocResult result) {
 /// - [root] could be a single file or a root directory.
 LocResult countLinesOfCode(String root) {
   final Map<String, RegExp> matchers = {
-      MATCH_FILE: options[MATCH_FILE] == null ? null : new RegExp(options[MATCH_FILE]),
-      NOT_MATCH_FILE: options[NOT_MATCH_FILE] == null ? null : new RegExp(options[NOT_MATCH_FILE]),
-      MATCH_DIR: options[MATCH_DIR] == null ? null : new RegExp(options[MATCH_DIR]),
-      NOT_MATCH_DIR: options[NOT_MATCH_DIR] == null ? null : new RegExp(options[NOT_MATCH_DIR])
+    MATCH_FILE:
+    options[MATCH_FILE] == null ? null : new RegExp(options[MATCH_FILE]),
+    NOT_MATCH_FILE: options[NOT_MATCH_FILE] == null
+    ? null
+    : new RegExp(options[NOT_MATCH_FILE]),
+    MATCH_DIR:
+    options[MATCH_DIR] == null ? null : new RegExp(options[MATCH_DIR]),
+    NOT_MATCH_DIR: options[NOT_MATCH_DIR] == null
+    ? null
+    : new RegExp(options[NOT_MATCH_DIR])
   };
 
   LocResult result = new LocResult();
@@ -296,7 +348,8 @@ LocResult countLinesOfCode(String root) {
   }
 
   final startingDir = new Directory(root);
-  List<FileSystemEntity> each = startingDir.listSync(recursive: options[RECURSIVE], followLinks: options[FOLLOW_LINKS]);
+  List<FileSystemEntity> each = startingDir.listSync(
+      recursive: options[RECURSIVE], followLinks: options[FOLLOW_LINKS]);
   each.forEach((entity) {
     if (entity is! File) {
       return;

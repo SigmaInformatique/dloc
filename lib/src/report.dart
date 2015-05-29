@@ -158,21 +158,25 @@ class ReportData {
 }
 
 /// Appends CSV line(s) to file
-void _appendToFile(String lines, String out, {bool stdoutIfNull : true}) {
-  if (out != null) {
-    lines = lines.replaceAll(',', ';'); // wanted ';' as it opens easily in Excel
-    new File(out)
-      ..createSync(recursive: true)
-      ..writeAsStringSync(lines, mode: FileMode.APPEND);
-
+void _appendToFile(List<String> lines, String out, {bool stdoutIfNull : true}) {
+  if (out == null) {
+    if (stdoutIfNull) {
+      lines.forEach((line) => stdout.writeln(line));
+    }
     return;
   }
 
-  if (stdoutIfNull) {
-    stdout.writeln(lines);
-  }
-}
+  // Here append to file
+  String contentAsString = "";
+  lines.forEach((line) {
+    contentAsString += line.replaceAll(',', ';'); // wanted ';' as it opens easily in Excel
+    contentAsString += "\n";
+  });
 
+  new File(out)
+    ..createSync(recursive: true)
+    ..writeAsStringSync(contentAsString, mode: FileMode.APPEND, flush: true);
+}
 
 /// Sums report files to a single ReportData.
 ReportData aggregate(Iterable<String> inputReportFiles, {ReportData previous : null}) {

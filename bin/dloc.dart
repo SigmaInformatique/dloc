@@ -26,22 +26,17 @@ void _printLanguageInformation() {
   Map<String, String> map = new SplayTreeMap();
 
   langs.forEach((Lang lang) {
-    int length = 20 - lang.desc.length;
-    List<int> array = new List(length);
-    for (int i = 0; i < length; i++) {
-      array[i] = 0x0020;
-    }
-    String blanks = new String.fromCharCodes(array);
     String ext = lang.ext.pattern
     .replaceAll('.+', '')
     .replaceAll('\$', '')
     .replaceAll('\\', '')
     .replaceAll('|', ',');
-
-    map[lang.desc] = blanks + ext;
+    map[lang.desc] = ext;
   });
 
-  map.forEach((k, v) => print('$k $v'));
+
+  map.forEach((k, v) => print('${fillWithBlanks(k)} $v'));
+
 }
 
 void _doStart(List<String> arguments) {
@@ -90,16 +85,15 @@ void _doStart(List<String> arguments) {
     ..start();
 
   // compute loc
+  deleteFile(argResults[REPORT_FILE]);
   LocResult result = countLinesOfCode(argResults.rest[0]);
 
-  // and print to file
-  if (argResults[BY_FILE_BY_LANG] || argResults[BY_LANG]) {
-    deleteFile(argResults[REPORT_FILE]);
-    result.printToFile(argResults[REPORT_FILE]);
+  // and print results
+  if (!argResults[BY_FILE]) { // by file => not by lang
+    result.printContent(argResults[REPORT_FILE]);
   }
 
-
-  print("LOC computation done in: ${stopwatch.elapsedMilliseconds} ms");
+  print("\nLOC computation done in: ${stopwatch.elapsedMilliseconds} ms");
 }
 
 void main(List<String> arguments) {

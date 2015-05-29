@@ -10,21 +10,21 @@ Output example:
 ```
 LOC computation started...
 
-files,language,blank,comment,code
-1,Java,6,13,16
-1,JSP,8,12,4
-1,HTML,3,5,10
-1,SQL,3,4,3
-1,Visual Basic,0,3,1
-1,Progress,15,26,24
-1,Uniface,5,1,14
-1,Bourne Again Shell,6,2,16
-1,Bourne Shell,6,2,16
-1,Delphi,10,29,12
-1,XML,6,13,7
-10,Dart,206,2868,5276
+files     language                 blank     comment   code
+1         Java                     6         13        16
+1         JSP                      8         12        4
+1         HTML                     3         5         10
+1         SQL                      3         4         3
+1         Visual Basic             0         3         1
+1         Progress                 15        26        24
+1         Uniface                  5         1         14
+1         Bourne Again Shell       6         2         16
+1         Bourne Shell             6         2         16
+1         Delphi                   10        29        12
+1         XML                      6         13        7
+10        Dart                     213       2869      5331
 
-LOC computation done in: 447 ms
+LOC computation done in: 517 ms
 ```
 
 ## License

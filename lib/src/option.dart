@@ -27,7 +27,6 @@ const NOT_MATCH_DIR = 'not-match-d';
 const REPORT_FILE = 'report-file';
 const BY_FILE = 'by-file';
 const BY_FILE_BY_LANG = 'by-file-by-lang';
-const BY_LANG = 'by-lang';
 const PRINT_CMD_DETAIL = 'print-cmd-detail';
 const SUM_REPORTS = 'sum-reports';
 const SHOW_LANG = 'show-lang';
@@ -133,8 +132,6 @@ final parser = new ArgParser()
   ..addFlag(BY_FILE_BY_LANG,
       help: 'Report results for every source file encountered in addition to reporting by language.',
       negatable: false)
-  ..addFlag(BY_LANG,
-      help: 'Report results by language.', defaultsTo: true, negatable: false)
   ..addFlag(PRINT_CMD_DETAIL,
       help: 'Print details about command arguments.', negatable: false)
   ..addFlag(SUM_REPORTS,
