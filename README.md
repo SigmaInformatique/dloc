@@ -3,7 +3,7 @@
 ## Overview
 
 DLOC is a Dart program to count blank lines, comment lines and physical lines of source code. 
-Inspired by the [cloc](http://cloc.sourceforge.net/) Perl script.
+It is inspired by the [cloc](http://cloc.sourceforge.net/) Perl script.
 
 Output example:
 
@@ -27,19 +27,19 @@ files     language                 blank     comment   code
 LOC computation done in: 517 ms
 ```
 
-## License
+## License & Copyright
 
 DLOC is licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
-This software contains third party components. Please, see the [LICENSE](https://github.com/SigmaInformatique/dloc/blob/master/LICENSE) file for details.
+Please, see the [LICENSE](https://github.com/SigmaInformatique/dloc/blob/master/LICENSE) file for details.
 
-## Install
+## How to install?
 
 Download the [Dart SDK](https://www.dartlang.org/downloads/) and unzip the ZIP file.
 
 Put `dart-sdk/bin` in your PATH.
 
-If behind a proxy, set the environment variables: `http_proxy`, `https_proxy`, and `no_proxy`.
+If you are behind a proxy, set the environment variables: `http_proxy`, `https_proxy`, and `no_proxy`.
 
 Use the `pub global` command to install DLOC into your system.
 
@@ -47,22 +47,21 @@ Use the `pub global` command to install DLOC into your system.
 pub global activate dloc
 ```
 
-## Use
+## How to use?
 
-If you have [modified your PATH](https://www.dartlang.org/tools/pub/cmd/pub-global.html#running-a-script-from-your-path), 
-you can run DLOC from any local directory.
+If you have [modified your PATH](https://www.dartlang.org/tools/pub/cmd/pub-global.html#running-a-script-from-your-path), you can run DLOC from any local directory.
 
 ```
 $ dloc /path/to/sources
 ```
 
-Otherwise you can use the `pub global` command.
+Otherwise, you can use the `pub global` command.
 
 ```
 $ pub global run dloc /path/to/sources
 ```
 
-## Configure
+## Available options
 
 ```
 $ dloc
