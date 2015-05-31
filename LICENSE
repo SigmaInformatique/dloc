@@ -24,9 +24,9 @@ dart-petitparser
   https://github.com/petitparser/dart-petitparser
 
 logging
-  Modified BSD license, Copyright 2013, the Dart project authors
+  A modified BSD license, Copyright 2013, the Dart project authors
   https://github.com/dart-lang/logging
 
 args
-  Modified BSD license, Copyright 2013, the Dart project authors
+  A modified BSD license, Copyright 2013, the Dart project authors
   https://github.com/dart-lang/args
