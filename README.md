@@ -8,6 +8,7 @@
  - [Available options](#option)
  - [Recognized Languages](#lang)
  - [Found a bug?](#bug)
+ - [Want to contribute?](#contrib)
 
 ## <a name="overview"></a> Overview
 
@@ -130,3 +131,7 @@ XML                  (.xml,.XML)
 ## <a name="bug"></a> Found a bug?
 
 Please, use the [GitHub issues](https://github.com/SigmaInformatique/dloc/issues).
+
+## <a name="contrib"></a> Want to contribute?
+
+Please, see the [CONTRIBUTING](https://github.com/SigmaInformatique/dloc/blob/master/CONTRIBUTING.md) file.
