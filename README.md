@@ -1,6 +1,15 @@
 # Dart Lines Of Code
 
-## Overview
+ - [Overview](#overview) 
+ - [License & Copyright](#license) 
+ - [How to install?](#install)
+ - [How to use?](#use)
+ - [How to use with Docker?](#docker)
+ - [Available options](#option)
+ - [Recognized Languages](#lang)
+ - [Found a bug?](#bug)
+
+## <a name="overview"></a> Overview
 
 DLOC is a Dart program to count blank lines, comment lines and physical lines of source code. 
 It is inspired by the [cloc](http://cloc.sourceforge.net/) Perl script.
@@ -27,13 +36,13 @@ files     language                 blank     comment   code
 LOC computation done in: 517 ms
 ```
 
-## License & Copyright
+## <a name="license"></a> License & Copyright
 
 DLOC is licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
 Please, see the [LICENSE](https://github.com/SigmaInformatique/dloc/blob/master/LICENSE) file for details.
 
-## How to install?
+## <a name="install"></a> How to install?
 
 Download the [Dart SDK](https://www.dartlang.org/downloads/) and unzip the ZIP file.
 
@@ -47,7 +56,7 @@ Use the `pub global` command to install DLOC into your system.
 pub global activate dloc
 ```
 
-## How to use?
+## <a name="use"></a> How to use?
 
 If you have [modified your PATH](https://www.dartlang.org/tools/pub/cmd/pub-global.html#running-a-script-from-your-path), you can run DLOC from any local directory.
 
@@ -61,11 +70,11 @@ Otherwise, you can use the `pub global` command.
 $ pub global run dloc /path/to/sources
 ```
 
-## How to use with Docker?
+## <a name="docker"></a> How to use with Docker?
 
 If [Docker](https://www.docker.com/) is already present on your system, you can immediately use [DLOC image](https://registry.hub.docker.com/u/sigmainformatique/dloc/) from Docker Hub. No installation is needed.
 
-## Available options
+## <a name="option"></a> Available options
 
 ```
 $ dloc
@@ -88,7 +97,7 @@ $ dloc
     --show-lang           Print information about all known languages and exit.
 ```
 
-## Recognized Languages
+## <a name="lang"></a> Recognized Languages
 
 ```
 $ dloc --show-lang
@@ -118,6 +127,6 @@ Visual Basic         (.bas,.cls,.ctl,.dsr,.frm,.vb,.VB,.vba,.VBA,.vbs,.VBS)
 XML                  (.xml,.XML)
 ```
 
-## Found a bug?
+## <a name="bug"></a> Found a bug?
 
 Please, use the [GitHub issues](https://github.com/SigmaInformatique/dloc/issues).
