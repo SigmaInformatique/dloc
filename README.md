@@ -73,7 +73,7 @@ $ pub global run dloc /path/to/sources
 
 ## <a name="docker"></a> How to use with Docker?
 
-If [Docker](https://www.docker.com/) is already present on your system, you can immediately use [DLOC image](https://registry.hub.docker.com/u/sigmainformatique/dloc/) from Docker Hub. No installation is needed.
+If [Docker](https://www.docker.com/) is already present on your system, you can use the [DLOC image](https://registry.hub.docker.com/u/sigmainformatique/dloc/) from Docker Hub. No installation is needed.
 
 ## <a name="option"></a> Available options
 
