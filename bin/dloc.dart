@@ -26,17 +26,11 @@ void _printLanguageInformation() {
   Map<String, String> map = new SplayTreeMap();
 
   langs.forEach((Lang lang) {
-    String ext = lang.ext.pattern
-    .replaceAll('.+', '')
-    .replaceAll('\$', '')
-    .replaceAll('\\', '')
-    .replaceAll('|', ',');
+    String ext = lang.ext.pattern.replaceAll('.+', '').replaceAll('\$', '').replaceAll('\\', '').replaceAll('|', ',');
     map[lang.desc] = ext;
   });
 
-
   map.forEach((k, v) => print('${fillWithBlanks(k)} $v'));
-
 }
 
 void _doStart(List<String> arguments) {
@@ -81,15 +75,15 @@ void _doStart(List<String> arguments) {
     options.printInfo();
   }
 
-  var stopwatch = new Stopwatch()
-    ..start();
+  var stopwatch = new Stopwatch()..start();
 
   // compute loc
   deleteFile(argResults[REPORT_FILE]);
   LocResult result = countLinesOfCode(argResults.rest[0]);
 
   // and print results
-  if (!argResults[BY_FILE]) { // by file => not by lang
+  if (!argResults[BY_FILE]) {
+    // by file => not by lang
     result.printContent(argResults[REPORT_FILE]);
   }
 

@@ -64,8 +64,7 @@ class ReportData {
           }
           values[lang][colh] += int.parse(lineValues[i]);
         }
-      }
-      catch (exception) {
+      } catch (exception) {
         throw 'Cannot parse file "$filename"';
       }
     }
@@ -143,7 +142,6 @@ class ReportData {
       content += '\n';
     });
 
-
     if (new File(out).existsSync()) {
       logger.warning('Found previous file $out');
       deleteFile(out);
@@ -158,7 +156,7 @@ class ReportData {
 }
 
 /// Appends CSV line(s) to file
-void _appendToFile(List<String> lines, String out, {bool stdoutIfNull : true}) {
+void _appendToFile(List<String> lines, String out, {bool stdoutIfNull: true}) {
   if (out == null) {
     if (stdoutIfNull) {
       lines.forEach((line) => stdout.writeln(line));
@@ -179,14 +177,13 @@ void _appendToFile(List<String> lines, String out, {bool stdoutIfNull : true}) {
 }
 
 /// Sums report files to a single ReportData.
-ReportData aggregate(Iterable<String> inputReportFiles, {ReportData previous : null}) {
+ReportData aggregate(Iterable<String> inputReportFiles, {ReportData previous: null}) {
   ReportData data = (previous == null) ? new ReportData() : previous;
   for (String each in inputReportFiles) {
     data.addFileContent(each);
   }
   return data;
 }
-
 
 /// Sums report files to a single file if [out] is not null, to stdout otherwise.
 void aggregateInFile(Iterable<String> inputReportFiles, String out) {

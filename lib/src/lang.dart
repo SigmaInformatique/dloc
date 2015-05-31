@@ -222,60 +222,54 @@ class Lang {
 }
 
 // The list of all processed languages
-final List langs = [new Lang(JAVA, JAVA_DESC, JAVA_CMT_SINGLE)
-  ..withMulti(JAVA_CMT_FROM, JAVA_CMT_TO)
-  ..withRmInline(JAVA_RM_INLINE), //
-new Lang(JSP, JSP_DESC, JSP_CMT_SINGLE)
-  ..withMulti(JSP_CMT_FROM, JSP_CMT_TO)
-  ..withMulti(JSP_CMT_FROM2, JSP_CMT_TO2), //
-new Lang(JS, JS_DESC, JS_CMT_SINGLE)
-  ..withMulti(JS_CMT_FROM, JS_CMT_TO)
-  ..withRmInline(JS_RM_INLINE), //
-new Lang.noSingle(HTML, HTML_DESC)
-  ..withMulti(HTML_CMT_FROM, HTML_CMT_TO), //
-new Lang(SQL, SQL_DESC, SQL_CMT_SINGLE)
-  ..withMulti(SQL_CMT_FROM, SQL_CMT_TO), //
-new Lang(VB, VB_DESC, VB_CMT_SINGLE), //
-new Lang.noSingle(ASP, ASP_DESC)
-  ..withMulti(ASP_CMT_FROM, ASP_CMT_TO)
-  ..withMulti(ASP_CMT_FROM2, ASP_CMT_TO2), //
-new Lang.noSingle(ASP_NET, ASP_NET_DESC)
-  ..withMulti(ASP_NET_CMT_FROM, ASP_NET_CMT_TO)
-  ..withMulti(ASP_NET_CMT_FROM2, ASP_NET_CMT_TO2), //
-new Lang.noSingle(DELPHI_FORM, DELPHI_FORM_DESC), //
-new Lang(PROGRESS, PROGRESS_DESC, PROGRESS_CMT_SINGLE)
-  ..withMulti(PROGRESS_CMT_FROM, PROGRESS_CMT_TO), //
-new Lang(UNIFACE, UNIFACE_DESC, UNIFACE_CMT_SINGLE)
-  ..withRmMatches(UNIFACE_RM_MATCHES)
-  ..withMargin(UNIFACE_MARGIN), //
-new Lang.noSingle(JASPER, JASPER_DESC)
-  ..withMulti(JASPER_CMT_FROM, JASPER_CMT_TO), //
-new Lang(BASH, BASH_DESC, BASH_CMT_SINGLE)
-  ..withRmMatches(BASH_RM_MATCHES), //
-new Lang(SH, SH_DESC, SH_CMT_SINGLE)
-  ..withRmMatches(SH_RM_MATCHES), //
-new Lang(DOS, DOS_DESC, DOS_CMT_SINGLE), //
-new Lang(TALEND, TALEND_DESC, TALEND_CMT_SINGLE)
-  ..withMulti(TALEND_CMT_FROM, TALEND_CMT_TO), //
-new Lang(CSHARP, CSHARP_DESC, CSHARP_CMT_SINGLE)
-  ..withMulti(CSHARP_CMT_FROM, CSHARP_CMT_TO)
-  ..withRmInline(CSHARP_RM_INLINE), //
-new Lang(DELPHI, DELPHI_DESC, DELPHI_CMT_SINGLE)
-  ..withMulti(DELPHI_CMT_FROM, DELPHI_CMT_TO)
-  ..withMulti(DELPHI_CMT_FROM2, DELPHI_CMT_TO2), //
-new Lang(GROOVY, GROOVY_DESC, GROOVY_CMT_SINGLE)
-  ..withMulti(GROOVY_CMT_FROM, GROOVY_CMT_TO)
-  ..withRmInline(GROOVY_RM_INLINE), //
-new Lang.noSingle(GSP, GSP_DESC)
-  ..withMulti(GSP_CMT_FROM, GSP_CMT_TO)
-  ..withMulti(GSP_CMT_FROM2, GSP_CMT_TO2)
-  ..withMulti(GSP_CMT_FROM3, GSP_CMT_TO3), //
-new Lang.noSingle(XML, XML_DESC)
-  ..withMulti(XML_CMT_FROM, XML_CMT_TO), //
-new Lang.noSingle(COBOL, COBOL_DESC), //
-new Lang(DART, DART_DESC, DART_CMT_SINGLE)
-..withMulti(DART_CMT_FROM, DART_CMT_TO)
-..withRmInline(DART_RM_INLINE) ];
+final List langs = [
+  new Lang(JAVA, JAVA_DESC, JAVA_CMT_SINGLE)
+    ..withMulti(JAVA_CMT_FROM, JAVA_CMT_TO)
+    ..withRmInline(JAVA_RM_INLINE), //
+  new Lang(JSP, JSP_DESC, JSP_CMT_SINGLE)
+    ..withMulti(JSP_CMT_FROM, JSP_CMT_TO)
+    ..withMulti(JSP_CMT_FROM2, JSP_CMT_TO2), //
+  new Lang(JS, JS_DESC, JS_CMT_SINGLE)
+    ..withMulti(JS_CMT_FROM, JS_CMT_TO)
+    ..withRmInline(JS_RM_INLINE), //
+  new Lang.noSingle(HTML, HTML_DESC)..withMulti(HTML_CMT_FROM, HTML_CMT_TO), //
+  new Lang(SQL, SQL_DESC, SQL_CMT_SINGLE)..withMulti(SQL_CMT_FROM, SQL_CMT_TO), //
+  new Lang(VB, VB_DESC, VB_CMT_SINGLE), //
+  new Lang.noSingle(ASP, ASP_DESC)
+    ..withMulti(ASP_CMT_FROM, ASP_CMT_TO)
+    ..withMulti(ASP_CMT_FROM2, ASP_CMT_TO2), //
+  new Lang.noSingle(ASP_NET, ASP_NET_DESC)
+    ..withMulti(ASP_NET_CMT_FROM, ASP_NET_CMT_TO)
+    ..withMulti(ASP_NET_CMT_FROM2, ASP_NET_CMT_TO2), //
+  new Lang.noSingle(DELPHI_FORM, DELPHI_FORM_DESC), //
+  new Lang(PROGRESS, PROGRESS_DESC, PROGRESS_CMT_SINGLE)..withMulti(PROGRESS_CMT_FROM, PROGRESS_CMT_TO), //
+  new Lang(UNIFACE, UNIFACE_DESC, UNIFACE_CMT_SINGLE)
+    ..withRmMatches(UNIFACE_RM_MATCHES)
+    ..withMargin(UNIFACE_MARGIN), //
+  new Lang.noSingle(JASPER, JASPER_DESC)..withMulti(JASPER_CMT_FROM, JASPER_CMT_TO), //
+  new Lang(BASH, BASH_DESC, BASH_CMT_SINGLE)..withRmMatches(BASH_RM_MATCHES), //
+  new Lang(SH, SH_DESC, SH_CMT_SINGLE)..withRmMatches(SH_RM_MATCHES), //
+  new Lang(DOS, DOS_DESC, DOS_CMT_SINGLE), //
+  new Lang(TALEND, TALEND_DESC, TALEND_CMT_SINGLE)..withMulti(TALEND_CMT_FROM, TALEND_CMT_TO), //
+  new Lang(CSHARP, CSHARP_DESC, CSHARP_CMT_SINGLE)
+    ..withMulti(CSHARP_CMT_FROM, CSHARP_CMT_TO)
+    ..withRmInline(CSHARP_RM_INLINE), //
+  new Lang(DELPHI, DELPHI_DESC, DELPHI_CMT_SINGLE)
+    ..withMulti(DELPHI_CMT_FROM, DELPHI_CMT_TO)
+    ..withMulti(DELPHI_CMT_FROM2, DELPHI_CMT_TO2), //
+  new Lang(GROOVY, GROOVY_DESC, GROOVY_CMT_SINGLE)
+    ..withMulti(GROOVY_CMT_FROM, GROOVY_CMT_TO)
+    ..withRmInline(GROOVY_RM_INLINE), //
+  new Lang.noSingle(GSP, GSP_DESC)
+    ..withMulti(GSP_CMT_FROM, GSP_CMT_TO)
+    ..withMulti(GSP_CMT_FROM2, GSP_CMT_TO2)
+    ..withMulti(GSP_CMT_FROM3, GSP_CMT_TO3), //
+  new Lang.noSingle(XML, XML_DESC)..withMulti(XML_CMT_FROM, XML_CMT_TO), //
+  new Lang.noSingle(COBOL, COBOL_DESC), //
+  new Lang(DART, DART_DESC, DART_CMT_SINGLE)
+    ..withMulti(DART_CMT_FROM, DART_CMT_TO)
+    ..withRmInline(DART_RM_INLINE)
+];
 
 /// Returns the lang object given a [filename], `null` otherwise.
 Lang hasMatch(String filename) {

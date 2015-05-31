@@ -64,8 +64,7 @@ void doTest() {
     });
   });
 
-  ResultByLang progressResults =
-      results.data[_getLangFromDesc(PROGRESS_DESC).ext];
+  ResultByLang progressResults = results.data[_getLangFromDesc(PROGRESS_DESC).ext];
   group("Count Progress", () {
     test("lines OK", () {
       expect(progressResults.lines, equals(24));
@@ -104,8 +103,7 @@ void doTest() {
     });
   });
 
-  ResultByLang unifaceResults =
-      results.data[_getLangFromDesc(UNIFACE_DESC).ext];
+  ResultByLang unifaceResults = results.data[_getLangFromDesc(UNIFACE_DESC).ext];
   group("Count Uniface", () {
     test("lines OK", () {
       expect(unifaceResults.lines, equals(14));

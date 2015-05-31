@@ -87,8 +87,7 @@ class CommandLineArgs extends Properties {
         }
         if (each.cmtMultiStarts != null) {
           for (int i = 0; i < each.cmtMultiStarts.length; i++) {
-            content +=
-                '#    comments (multi-line)=${each.cmtMultiStarts[i]},${each.cmtMultiEnds[i]}\n';
+            content += '#    comments (multi-line)=${each.cmtMultiStarts[i]},${each.cmtMultiEnds[i]}\n';
           }
         } else {
           content += '#    comments (multi-line)=NA\n';
@@ -106,37 +105,19 @@ class CommandLineArgs extends Properties {
 // ============================================================================
 
 final parser = new ArgParser()
-  ..addFlag(RECURSIVE,
-      help: 'Recurse into sub-directories.',
-      abbr: 'r',
-      defaultsTo: true,
-      negatable: false)
-  ..addFlag(FOLLOW_LINKS,
-      help: 'Follow symbolic links.', abbr: 'S', negatable: false)
-  ..addOption(ENCODING,
-      help: 'The encoding to use (do not specify if unknown).',
-      allowed: ["utf8", "latin1"])
-  ..addOption(MATCH_DIR,
-      help: 'Only count files in directories matching the regex.')
-  ..addOption(NOT_MATCH_DIR,
-      help: 'Count all files except those in directories matching the regex.')
-  ..addOption(MATCH_FILE,
-      help: 'Only count files whose basenames match the regex.')
-  ..addOption(NOT_MATCH_FILE,
-      help: 'Count all files except those whose basenames match the regex.')
-  ..addOption(REPORT_FILE,
-      help: 'Write the results to <file> file instead of STDOUT.')
-  ..addFlag(BY_FILE,
-      help: 'Report results for every source file encountered.',
-      negatable: false)
+  ..addFlag(RECURSIVE, help: 'Recurse into sub-directories.', abbr: 'r', defaultsTo: true, negatable: false)
+  ..addFlag(FOLLOW_LINKS, help: 'Follow symbolic links.', abbr: 'S', negatable: false)
+  ..addOption(ENCODING, help: 'The encoding to use (do not specify if unknown).', allowed: ["utf8", "latin1"])
+  ..addOption(MATCH_DIR, help: 'Only count files in directories matching the regex.')
+  ..addOption(NOT_MATCH_DIR, help: 'Count all files except those in directories matching the regex.')
+  ..addOption(MATCH_FILE, help: 'Only count files whose basenames match the regex.')
+  ..addOption(NOT_MATCH_FILE, help: 'Count all files except those whose basenames match the regex.')
+  ..addOption(REPORT_FILE, help: 'Write the results to <file> file instead of STDOUT.')
+  ..addFlag(BY_FILE, help: 'Report results for every source file encountered.', negatable: false)
   ..addFlag(BY_FILE_BY_LANG,
-      help: 'Report results for every source file encountered in addition to reporting by language.',
-      negatable: false)
-  ..addFlag(PRINT_CMD_DETAIL,
-      help: 'Print details about command arguments.', negatable: false)
+      help: 'Report results for every source file encountered in addition to reporting by language.', negatable: false)
+  ..addFlag(PRINT_CMD_DETAIL, help: 'Print details about command arguments.', negatable: false)
   ..addFlag(SUM_REPORTS,
       help: 'Makes a cumulative set of results containing the sum of data from the individual report files.',
       negatable: false)
-  ..addFlag(SHOW_LANG,
-      help: 'Print information about all known languages and exit.',
-      negatable: false);
+  ..addFlag(SHOW_LANG, help: 'Print information about all known languages and exit.', negatable: false);

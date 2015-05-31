@@ -63,6 +63,3 @@ void _initLogWith(Level level) {
     print('${rec.level.name}: ${rec.time}: ${rec.message}');
   });
 }
-
-
-
